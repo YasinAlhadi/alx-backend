@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""LFU Cache"""
+"""LFU python Cache"""
 
 from base_caching import BaseCaching
 

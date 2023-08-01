@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-""" Basic Babel setup"""
-from flask import Flask, render_template
+""" Get locale from request """
+from flask import Flask, render_template, request
 from flask_babel import Babel
 
 
@@ -18,9 +18,15 @@ class Config(object):
 app.config.from_object(Config)
 
 
+@babel.localeselector
+def get_locale() -> str:
+    """ Get locale from request """
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+
+
 @app.route('/')
 def index() -> str:
-    """ render basic index.html """
+    """  render Basic index.html """
     return render_template('0-index.html')
 
 
